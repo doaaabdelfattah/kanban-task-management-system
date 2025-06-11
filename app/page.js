@@ -1,37 +1,36 @@
 'use client'
-import Image from "next/image";
-import SideBar from "./_components/layout/SideBar";
-import plusIcon from '@/public/assets/icon-add-task-mobile.svg'
-import threeDots from '@/public/assets/icon-vertical-ellipsis.svg'
 import { useBoard } from "./_context/BoradContext";
+import SideBar from "./_components/layout/SideBar";
+import Header from "./_components/layout/Header";
+import { useState } from "react";
+import Logo from "./_components/layout/Logo";
+
 
 export default function Home() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
   const { data, selectedBoardName } = useBoard();
   const selectedBoard = data.boards.find(b => b.name === selectedBoardName);
 
   return (
-    <>
-      <aside className=" ">
-        <SideBar />
-      </aside>
+    <div className={`bg-light-grey grid
+      grid-rows-[6rem_1fr] h-screen`}>
 
-      <div className="content">
-        <header className="h-[6rem] bg-primary-white border-b-light-lines border-b-1 p-6 flex justify-between w-full items-center">
-          <h1 className="heading-xl">
-            {selectedBoardName}
-          </h1>
-          <div className="flex items-center justify-center gap-6">
-            <button className="cursor-pointer py-3.5 heading-md px-6 text-white rounded-3xl bg-main-purple hover:bg-main-purple/25 flex  items-center justify-center gap-1">
-              <Image src={plusIcon} height='10' width='10' />
-              Add New Task
-            </button>
-            <button className="cursor-pointer">
-              <Image src={threeDots} height='12' width='4' />
+      {/* ======== Row 1========== */}
+      <div className="grid grid-cols-[18.75rem_1fr]">
+        <div className={`border-r-light-lines border-r-1 flex justify-center bg-primary-white  ${isSidebarOpen ? '' : 'border-b-light-lines border-b-1 '}`}>
+          <Logo />
+        </div>
+        <Header />
+      </div>
 
-            </button>
-          </div>
-        </header >
-        <section>
+      <div className={`grid h-full transition-all duration-700
+    ${isSidebarOpen ? 'grid-cols-[18.75rem_1fr]' : 'grid-cols-[0_1fr]'}`}>
+        <aside className=" ">
+          <SideBar isOpen={isSidebarOpen} toggleOpen={setIsSidebarOpen} />
+        </aside>
+
+        <main className="">
           <div className="flex space-x-4">
             {selectedBoard.columns.map(column => (
               <div key={column.name} className="bg-gray-100 p-4 rounded-md w-64">
@@ -44,9 +43,11 @@ export default function Home() {
               </div>
             ))}
           </div>
-        </section>
-      </div >
-    </>
+        </main>
+
+      </div>
+    </div>
+
   )
 }
 // 

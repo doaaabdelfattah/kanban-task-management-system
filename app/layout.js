@@ -15,15 +15,14 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="en">
       <body
         className={`${plusJakartaSans.className} antialiased`}
       >
         <BoardProvider initialData={boardData}>
-          <main className="main-layout bg-light-grey min-h-[100vh]">
-            {children}
-          </main>
+          {children}
         </BoardProvider>
       </body>
     </html>
