@@ -1,102 +1,12 @@
 @import "tailwindcss";
 
-/* ===============  Color Variables ============ */
+@import "./components.css";
+@import "./globals.css";
 
-@theme {
-  --color-primary-black: #000112;
-  --color-primary-white: #ffffff;
-
-  --color-very-dark-grey: #20212c;
-  --color-dark-grey: #2b2c37;
-  --color-medium-grey: #828fa3;
-  --color-light-grey: #f4f7fd;
-
-  --color-dark-lines: #3e3f4e;
-  --color-light-lines: #e4ebfa;
-
-  --color-main-purple: #635fc7;
-  --color-main-purple-hover: #a8a4ff;
-  --color-main-red: #ea5555;
-  --color-main-red-hover: #ff9898;
-}
-
-.heading-xl {
-  font-size: 1.5rem; /* 24px = 2xl */
-  line-height: 1.875rem; /* 30px = 3xl */
-  font-weight: 700;
-}
-.heading-lg {
-  font-size: 1.125rem; /* 18px = lg */
-  line-height: 1.5rem; /* 1.5rem (24px) = 2xl*/
-  font-weight: 700;
-}
-.heading-md {
-  font-size: 0.938rem; /* 15px*/
-  line-height: 1.125rem; /* 1.125rem (18px) */
-  font-weight: 700;
-}
-.heading-sm {
-  font-size: 0.75rem; /*  0.75rem (12px) xs */
-  line-height: 1rem; /* 1rem (16px) */
-  font-weight: 700;
-  letter-spacing: 0.15em;
-}
-
-.body-lg {
-  font-size: 0.813rem; /*   (13px)  */
-  line-height: 1.438rem; /* 23px*/
-  font-weight: 500;
-}
-.body-md {
-  font-size: 0.75rem; /*   (12px)  */
-  line-height: 0.938rem; /* 15px*/
-  font-weight: 700;
-}
-
-.small-btn-font {
-  font-size: 0.813rem; /*   (13px)  */
-  line-height: 1.438rem; /* 23px*/
-  font-weight: 700;
-}
-
-.form-control {
+.main-layout {
   display: grid;
-  grid-template-columns: 1rem auto;
-  gap: 1rem;
-  align-items: center;
+  grid-template-columns: 18.75rem 1fr;
+  /* grid-template-rows: 6rem 1fr; */
 }
 
-input[type="checkbox"] {
-  appearance: none;
-  background-color: #fff;
-  margin: 0;
-  width: 1rem;
-  height: 1rem;
-  border: 1px solid rgba(145, 130, 163, 0.24);
-  border-radius: 2px;
-  display: grid;
-  place-content: center;
-}
-
-input[type="checkbox"]::before {
-  content: "";
-  width: 0.65em;
-  height: 0.65em;
-  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-  transform: scale(0);
-  transform-origin: bottom left;
-  background-color: #fff;
-}
-
-input[type="checkbox"]:checked::before {
-  transform: scale(1);
-}
-input[type="checkbox"]:checked {
-  background-color: #635fc7;
-  border: none;
-}
-input[type="checkbox"]:checked + span {
-  text-decoration: line-through;
-  text-decoration-thickness: 1px;
-  opacity: 25%;
-}
+/* ============ swicth ============== */
