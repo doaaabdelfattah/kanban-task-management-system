@@ -16,6 +16,8 @@
   --color-main-purple-hover: #a8a4ff;
   --color-main-red: #ea5555;
   --color-main-red-hover: #ff9898;
+
+  --shadow-custom-soft: "0px 4px 6px 0px rgba(54, 78, 126, 0.1)";
 }
 
 .heading-xl {

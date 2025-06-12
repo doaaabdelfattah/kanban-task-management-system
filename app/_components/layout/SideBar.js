@@ -13,7 +13,7 @@ function SideBar({ isOpen, toggleOpen }) {
     <div className="flex flex-col justify-between h-full">
       {/* ============= Side Bar ================ */}
 
-      <div className={`bg-primary-white relative flex flex-col border-r-light-lines border-r-1 h-full z-10 transition-all duration-700
+      <div className={`bg-primary-white flex flex-col border-r-light-lines border-r-1 h-full z-10 transition-all duration-700 
         ${isOpen ? 'translate-x-0' : 'translate-x-[-18.75rem]'}
         `}>
         <SideBarList />
