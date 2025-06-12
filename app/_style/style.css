@@ -3,10 +3,21 @@
 @import "./components.css";
 @import "./globals.css";
 
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 .main-layout {
   display: grid;
   grid-template-columns: 18.75rem 1fr;
   /* grid-template-rows: 6rem 1fr; */
 }
 
-/* ============ swicth ============== */
+body {
+  font-size: 1rem; /* default */
+  @media (max-width: 768px) {
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 640px) {
+    font-size: 0.75rem;
+  }
+}
