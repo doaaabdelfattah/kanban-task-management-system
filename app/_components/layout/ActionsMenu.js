@@ -1,0 +1,22 @@
+function ActionsMenu({ text, onClose }) {
+  const handleEdit = () => {
+    onClose(prev => !prev)
+    console.log('edited')
+  }
+  const handleDelete = () => {
+    onClose(prev => !prev)
+    console.log('deleted')
+  }
+  return (
+    <div className="w-[192px] h-[94px] p-4 flex flex-col items-start gap-4 [box-shadow:0px_4px_6px_0px_rgba(54,78,126,0.1)] bg-primary-white rounded-lg z-50 absolute  top-[50px] md:top-[60px]  right-0">
+      <button className="body-lg text-medium-grey hover:opacity-70 cursor-pointer  w-full text-left" onClick={handleEdit}>
+        Edit {text}
+      </button>
+      <button className="body-lg w-full text-left text-main-red cursor-pointer hover:opacity-70" onClick={handleDelete}>
+        Delete {text}
+      </button>
+    </div>
+  )
+}
+
+export default ActionsMenu

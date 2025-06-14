@@ -1,5 +1,7 @@
 
+import ModalManager from './_components/modal/ModalManager';
 import BoardProvider from './_context/BoradContext';
+import { ModalProvider } from './_context/ModalContext';
 import './_style/style.css'
 import boardData from '@/app/_data/data.json'
 
@@ -22,7 +24,10 @@ export default function RootLayout({ children }) {
         className={`${plusJakartaSans.className} antialiased`}
       >
         <BoardProvider initialData={boardData}>
-          {children}
+          <ModalProvider>
+            {children}
+            <ModalManager />
+          </ModalProvider>
         </BoardProvider>
       </body>
     </html>
