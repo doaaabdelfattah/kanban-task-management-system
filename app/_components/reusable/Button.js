@@ -9,9 +9,9 @@ const colors = {
   destructive: 'bg-main-red hover:bg-main-red-hover text-primary-white',
 }
 
-function Button({ children, size, color }) {
+function Button({ children, size, color, handleOnClick, onType = "button" }) {
   return (
-    <button className={`${sizes[size]} ${colors[color]} cursor-pointer`}>
+    <button className={`${sizes[size]} ${colors[color]} w-full cursor-pointer`} onClick={handleOnClick} type={onType}>
       {children}
     </button>
   )

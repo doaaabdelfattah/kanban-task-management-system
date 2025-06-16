@@ -9,6 +9,7 @@ import logoMobile from '@/public/assets/logo-mobile.svg'
 import chevDown from '@/public/assets/icon-chevron-down.svg'
 import chevUp from '@/public/assets/icon-chevron-up.svg'
 import ActionsMenu from "./ActionsMenu";
+import ActionsMenuTrigger from "../reusable/ActionsMenuTrigger";
 
 function Header({ isOpen, toggleOpen }) {
   const [isOpenwindow, setIsOpenWindow] = useState(false);
@@ -35,12 +36,7 @@ function Header({ isOpen, toggleOpen }) {
           <span className="max-md:hidden">Add New Task</span>
         </button>
 
-        <button className="cursor-pointer" onClick={() => setIsOpenWindow(prev => !prev)}>
-          <Image src={threeDots} height='12' width='4' alt='' />
-        </button>
-        {
-          isOpenwindow && <ActionsMenu text='Board' onClose={setIsOpenWindow} />
-        }
+        <ActionsMenuTrigger />
       </div>
     </header >
   )

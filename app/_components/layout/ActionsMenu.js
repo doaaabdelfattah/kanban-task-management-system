@@ -1,4 +1,5 @@
 function ActionsMenu({ text, onClose }) {
+
   const handleEdit = () => {
     onClose(prev => !prev)
     console.log('edited')

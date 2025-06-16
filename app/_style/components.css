@@ -16,6 +16,7 @@ input.custom-checkbox {
   border-radius: 2px;
   display: grid;
   place-content: center;
+  @apply dark:bg-very-dark-grey;
 }
 
 input.custom-checkbox::before {

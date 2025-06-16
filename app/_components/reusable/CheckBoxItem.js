@@ -1,14 +1,12 @@
-function CheckBoxItem() {
+function CheckBoxItem({ task, status }) {
   return (
     <>
-      <label className="form-control bg-light-grey rounded-sm p-3 font-bold text-sm text-primary-black w-fit hover:bg-main-purple/25 cursor-pointer mb-2">
-        <input type="checkbox" id="check" className="peer hidden custom-checkbox" />
-
+      <label className="form-control bg-light-grey rounded-sm p-3 font-bold text-sm text-primary-black hover:bg-main-purple/25 cursor-pointer mb-2 w-full dark:bg-very-dark-grey dark:text-medium-grey">
+        <input type="checkbox" id="check" className="peer hidden custom-checkbox" checked={status} onChange={() => { }} />
         <span className="peer-checked:line-through peer-checked:text-opacity-25 peer-checked:decoration-1">
-          Build UI for onboarding flow
+          {task}
         </span>
       </label>
-
     </>
   )
 }
