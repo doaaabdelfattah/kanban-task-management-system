@@ -6,6 +6,8 @@ import Header from "./_components/layout/Header";
 import Logo from "./_components/layout/Logo";
 import BoardContent from "./_components/layout/BoardContent";
 import useDarkMode from "./_hooks/useDarkMode";
+import DnDBoard from "./_components/layout/DnDBoard";
+import BasicDragDrop from "./_components/Dnd Tutorial/BasicDragDrop";
 
 
 export default function Home() {
@@ -38,7 +40,9 @@ export default function Home() {
 
 
         <main className="p-6 overflow-auto dark:bg-very-dark-grey">
-          <BoardContent />
+          {/* <BoardContent /> */}
+          <DnDBoard />
+
         </main>
 
       </div>

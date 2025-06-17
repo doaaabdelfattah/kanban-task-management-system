@@ -6,6 +6,7 @@ import './_style/style.css'
 import boardData from '@/app/_data/data.json'
 
 import { Plus_Jakarta_Sans } from "next/font/google";
+import { normalizeData } from './_lib/helpers';
 
 
 
@@ -30,7 +31,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${plusJakartaSans.className} antialiased`}
       >
-        <BoardProvider initialData={boardData}>
+        <BoardProvider initialData={normalizeData(boardData)}>
           <ModalProvider>
             {children}
             <ModalManager />
