@@ -12,7 +12,7 @@ function SideBar({ isOpen, toggleOpen, setIsSideMobile }) {
     <div className="flex flex-col justify-between h-full ">
       {/* ============= Side Bar ================ */}
 
-      <div className={`bg-primary-white dark:bg-dark-grey flex flex-col border-r-light-lines border-r-1 dark:border-r-dark-lines h-full z-10 max-md:rounded-md
+      <div className={`bg-primary-white dark:bg-dark-grey flex flex-col border-r-light-lines border-r-1 dark:border-r-dark-lines h-full z-50 max-md:rounded-md
         ${isOpen ? 'translate-x-0' : 'translate-x-[-18.75rem]'}
         `}>
         <SideBarList setIsSideMobile={setIsSideMobile} />

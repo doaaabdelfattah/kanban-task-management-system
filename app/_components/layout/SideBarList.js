@@ -16,7 +16,7 @@ function SideBarList({ setIsSideMobile }) {
   }
 
   return (
-    <div className="flex-1 ">
+    <div className="flex-1 z-50 ">
       <h2 className='mt-4 px-8 uppercase text-medium-grey text-xs tracking-[2.4px] font-bold'>
         All boards (3)
       </h2>

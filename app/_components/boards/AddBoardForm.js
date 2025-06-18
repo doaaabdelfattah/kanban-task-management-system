@@ -33,6 +33,7 @@ function AddBoardForm({ onClose }) {
       col.id === id ? { ...col, name: value } : col
     ));
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -62,7 +63,9 @@ function AddBoardForm({ onClose }) {
           <label className="font-bold text-medium-grey text-xs">
             Board Name
           </label>
-          <input type="text" className={`outline-[#828FA3]/25 outline-1 rounded-sm py-2 pl-4 text-xs font-medium leading-6 `} placeholder="e.g Web Design" value={boardName} onChange={handleInput} />
+          <input type="text" className={`outline-[#828FA3]/25 outline-1 rounded-sm py-2 pl-4 text-xs font-medium leading-6 `} placeholder="e.g Web Design"
+            value={boardName}
+            onChange={handleInput} />
           {
             error &&
             <span>{error}</span>

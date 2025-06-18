@@ -11,7 +11,10 @@ import chevUp from '@/public/assets/icon-chevron-up.svg'
 import ActionsMenu from "./ActionsMenu";
 import ActionsMenuTrigger from "../reusable/ActionsMenuTrigger";
 
+import { useModal } from "@/app/_context/ModalContext";
+
 function Header({ isOpen, toggleOpen }) {
+  const { openModal } = useModal();
   const [isOpenwindow, setIsOpenWindow] = useState(false);
   const { selectedBoardName } = useBoard();
   return (
@@ -31,12 +34,12 @@ function Header({ isOpen, toggleOpen }) {
 
       </div>
       <div className="flex items-center justify-center gap-6 relative">
-        <button className="cursor-pointer py-3.5 heading-md px-6 text-white rounded-3xl bg-main-purple hover:bg-main-purple/25 flex  items-center justify-center gap-1">
+        <button className="cursor-pointer py-3.5 heading-md px-6 text-white rounded-3xl bg-main-purple hover:bg-main-purple/25 flex  items-center justify-center gap-1" onClick={() => openModal('add-task')}>
           <Image src={plusIcon} className="max-md:w-3" height='10' width='10' alt='add task' />
           <span className="max-md:hidden">Add New Task</span>
         </button>
 
-        <ActionsMenuTrigger />
+        <ActionsMenuTrigger text='board' data={selectedBoardName} />
       </div>
     </header >
   )

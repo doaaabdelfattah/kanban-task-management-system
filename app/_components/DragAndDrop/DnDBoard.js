@@ -16,7 +16,7 @@ import {
   verticalListSortingStrategy,
   horizontalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import DnDTaskCard from "./DnDTaskCard";
+import DnDTaskCard from "@/app/_components/DragAndDrop/DnDTaskCard";
 import { useBoard } from "@/app/_context/BoradContext";
 
 
@@ -108,7 +108,10 @@ function DnDBoard() {
     //🧠 CASE 2: Moving to a different column
     else {
       // Get the task being moved
-      const movingTask = fromColumn.tasks.find((t) => t.id === activeId);
+      const movingTask = {
+        ...fromColumn.tasks.find((t) => t.id === activeId),
+        status: toColumn.name,
+      };
       // Remove it from the old column
       const updatedFromTasks = fromColumn.tasks.filter((t) => t.id !== activeId);
       // Add it to the beginning of the new column
@@ -173,6 +176,11 @@ function DnDBoard() {
               </SortableContext>
             </DroppableColumn>
           ))}
+          <div className="bg-light-lines/50 dark:bg-[#2B2C37]/50 group rounded-md mt-10 cursor-pointer h-screen flex items-center justify-center">
+            <button className="heading-xl group-hover:text-main-purple text-medium-grey">
+              + New Column
+            </button>
+          </div>
         </div>
       </SortableContext>
 

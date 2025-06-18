@@ -1,6 +1,6 @@
 import { useBoard } from "@/app/_context/BoradContext";
-import TaskCardItem from "./TaskCardItem";
 import Button from "../reusable/Button";
+import DnDBoard from "@/app/_components/DragAndDrop/DnDBoard";
 
 
 
@@ -18,24 +18,7 @@ function BoardContent() {
           </Button>
         </div>
       ) : (
-        <>
-          {selectedBoard.columns.map((column, index) => (
-            <div key={index}>
-              <h3 className="heading-sm text-medium-grey mb-6 uppercase">
-                {column.name} ({column.tasks.length})
-              </h3>
-
-              {column.tasks.map((task, taskIndex) => (
-                <TaskCardItem key={`${column.name}-${taskIndex}`} task={task} />
-              ))}
-            </div>
-          ))}
-          <div className="bg-light-lines/50 dark:bg-[#2B2C37]/50 group rounded-md mt-10 cursor-pointer h-screen flex items-center justify-center">
-            <button className="heading-xl group-hover:text-main-purple text-medium-grey">
-              + New Column
-            </button>
-          </div>
-        </>
+        <DnDBoard />
       )}
     </div>
 

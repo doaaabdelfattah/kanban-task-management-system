@@ -1,12 +1,26 @@
-function ActionsMenu({ text, onClose }) {
+import { useModal } from "@/app/_context/ModalContext"
 
+
+
+
+
+function ActionsMenu({ text, onClose }) {
+  const { openModal } = useModal();
   const handleEdit = () => {
     onClose(prev => !prev)
     console.log('edited')
   }
   const handleDelete = () => {
     onClose(prev => !prev)
-    console.log('deleted')
+
+    if (text === 'board') {
+      openModal('delete-board')
+    }
+    if (text === 'task') {
+      openModal('delete-task')
+    }
+
+    // console.log('deleted')
   }
   return (
     <div className="w-[192px] h-[94px] p-4 flex flex-col items-start gap-4 [box-shadow:0px_4px_6px_0px_rgba(54,78,126,0.1)] bg-primary-white rounded-lg z-50 absolute  top-[50px] md:top-[60px]  right-0">

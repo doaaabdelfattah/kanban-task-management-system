@@ -1,8 +1,13 @@
+import { useBoard } from "@/app/_context/BoradContext";
 import ActionsMenuTrigger from "../reusable/ActionsMenuTrigger"
 import CheckBoxItem from "../reusable/CheckBoxItem";
 import DropDownMenu from "../reusable/DropDownMenu";
 
 function ViewTaskModal({ task, onClose }) {
+
+  const { data, selectedBoardName } = useBoard();
+  const selectedBoard = data.boards.find((b) => b.name === selectedBoardName)
+  const columnNames = selectedBoard?.columns.map((col) => col.name) || [];
 
   const completedSubtasks = task.subtasks.filter(subtask => subtask.isCompleted).length;
   const allSubTasks = task.subtasks.length;
@@ -10,9 +15,9 @@ function ViewTaskModal({ task, onClose }) {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex gap-4 items-center justify-between ">
-        <h1 className="heading-lg dark:text-primary-white text-primary-black flex-1">This is  task {task.title}</h1>
+        <h1 className="heading-lg dark:text-primary-white text-primary-black flex-1"> {task.title}</h1>
         <div className="flex items-center justify-between relative">
-          <ActionsMenuTrigger />
+          <ActionsMenuTrigger text='task' data={task} />
         </div>
       </div>
       {
@@ -29,7 +34,7 @@ function ViewTaskModal({ task, onClose }) {
       </div>
       <div className="w-full">
         <p className="text-xs font-bold text-medium-grey mb-4">Current Status</p>
-        <DropDownMenu currentStatus={task.status} />
+        <DropDownMenu options={columnNames} value={task.status} />
       </div>
 
       <button onClick={onClose} className="mt-4 text-red-500">Close</button>

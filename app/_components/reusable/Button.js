@@ -1,6 +1,6 @@
 const sizes = {
   large: 'py-3.5 px-16 heading-md rounded-3xl',
-  small: 'py-2 px-[4.3rem] small-btn-font rounded-[1.25rem]',
+  small: 'py-2 px-[4.3rem] max-md:px-3 small-btn-font rounded-[1.25rem]',
 }
 
 const colors = {
