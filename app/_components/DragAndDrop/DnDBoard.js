@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import {
   DndContext,
   closestCenter,
@@ -18,6 +18,7 @@ import {
 } from "@dnd-kit/sortable";
 import DnDTaskCard from "@/app/_components/DragAndDrop/DnDTaskCard";
 import { useBoard } from "@/app/_context/BoradContext";
+import { useModal } from "@/app/_context/ModalContext";
 
 
 
@@ -28,7 +29,8 @@ function DroppableColumn({ id, children }) {
 
 function DnDBoard() {
 
-  const { data, selectedBoardName, setData } = useBoard();
+  const { data, selectedBoardName, setData, editBoard } = useBoard();
+  const { openModal } = useModal();
   const selectedBoard = data.boards.find((b) => b.name === selectedBoardName);
   const columns = selectedBoard.columns.map((col) => col.name);
   const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { delay: 50, tolerance: 5, } }));
@@ -37,7 +39,10 @@ function DnDBoard() {
   const [overId, setOverId] = useState(null); // For hover visual
 
 
+  const handleAddColumn = () => {
+    openModal('add-board', { boardToEdited: selectedBoard });
 
+  }
   const handleDragStart = ({ active }) => {
     // Flatten all tasks from all columns and find the one being dragged
     const task = selectedBoard.columns
@@ -177,7 +182,7 @@ function DnDBoard() {
             </DroppableColumn>
           ))}
           <div className="bg-light-lines/50 dark:bg-[#2B2C37]/50 group rounded-md mt-10 cursor-pointer h-screen flex items-center justify-center">
-            <button className="heading-xl group-hover:text-main-purple text-medium-grey">
+            <button className="heading-xl group-hover:text-main-purple cursor-pointer text-medium-grey" onClick={handleAddColumn}>
               + New Column
             </button>
           </div>
