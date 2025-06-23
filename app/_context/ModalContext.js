@@ -13,8 +13,19 @@ export function ModalProvider({ children }) {
   });
 
 
-  const openModal = (type, props = null) => {
-    setModal({ isOpen: true, type, props });
+  const openModal = (type, props = {}) => {
+    setModal(prev => {
+      // If same modal is open, force re-open
+      if (prev.isOpen) {
+        return { isOpen: false, type: null, props: {} };
+      }
+      return { isOpen: true, type, props };
+    });
+
+    // Delay to ensure React unmounts the current modal
+    setTimeout(() => {
+      setModal({ isOpen: true, type, props });
+    }, 0);
   };
 
   //hide modal and reset data

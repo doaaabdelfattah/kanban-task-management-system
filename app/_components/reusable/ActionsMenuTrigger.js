@@ -5,7 +5,7 @@ import threeDots from '@/public/assets/icon-vertical-ellipsis.svg';
 import ActionsMenu from "../layout/ActionsMenu";
 
 
-function ActionsMenuTrigger({ text }) {
+function ActionsMenuTrigger({ itemType, onDeleteData }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -18,7 +18,7 @@ function ActionsMenuTrigger({ text }) {
         <Image src={threeDots} height={12} width={4} alt="actions menu" />
       </button>
 
-      {isOpen && <ActionsMenu text={text} onClose={setIsOpen} />}
+      {isOpen && <ActionsMenu itemType={itemType} onClose={setIsOpen} onDeleteData={onDeleteData} />}
     </>
 
   );

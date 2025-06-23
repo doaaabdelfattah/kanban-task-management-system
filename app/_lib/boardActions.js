@@ -1,4 +1,4 @@
-export const boardActions = (setData, setSelectedBoardName, data) => (
+export const boardActions = (setData, setSelectedBoardName, selectedBoardName, data) => (
   {
     addBoard: (newBoard) => {
       setData(prev => ({
@@ -23,6 +23,29 @@ export const boardActions = (setData, setSelectedBoardName, data) => (
         };
       });
     },
+    editBoard: (editedBoard) => {
+      setData((prev) => {
+        return {
+          ...prev,
+          boards: prev.boards.map((board) => {
+
+            if (board.name !== selectedBoardName) return board;
+            return {
+              name: editedBoard.name,
+              columns: editedBoard.columns.map((editedCol) => ({
+                name: editedCol.name,
+                tasks: board.columns.find(col => col.name === editedCol.name)?.tasks || []
+              }))
+
+
+            }
+          })
+        }
+
+      })
+
+      setSelectedBoardName(editedBoard.name);
+    }
 
 
   })

@@ -8,6 +8,7 @@ function BoardContent() {
   const { data, selectedBoardName } = useBoard();
   const selectedBoard = data.boards.find(b => b.name === selectedBoardName);
 
+  if (!selectedBoard) return <p className="text-center mt-10">Board not found</p>;
   return (
     <div className={`${selectedBoard.columns.length === 0 ? 'flex items-center justify-center h-full' : 'grid auto-cols-[17.5rem] grid-flow-col gap-6'}`}>
       {selectedBoard.columns.length === 0 ? (

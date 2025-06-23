@@ -16,7 +16,9 @@ import { useModal } from "@/app/_context/ModalContext";
 function Header({ isOpen, toggleOpen }) {
   const { openModal } = useModal();
   const [isOpenwindow, setIsOpenWindow] = useState(false);
-  const { selectedBoardName } = useBoard();
+  const { selectedBoardName, data } = useBoard();
+
+  const selectedBoard = data.boards.find(b => b.name === selectedBoardName);
   return (
     <header className="bg-primary-white dark:bg-dark-grey  border-b-light-lines dark:border-none  border-b-1 md:p-6 p-5 flex justify-between w-full items-center">
       <div className="flex gap-4 items-center justify-between">
@@ -39,7 +41,7 @@ function Header({ isOpen, toggleOpen }) {
           <span className="max-md:hidden">Add New Task</span>
         </button>
 
-        <ActionsMenuTrigger text='board' data={selectedBoardName} />
+        <ActionsMenuTrigger itemType='board' onDeleteData={selectedBoard} />
       </div>
     </header >
   )

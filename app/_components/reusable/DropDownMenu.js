@@ -18,7 +18,7 @@ function DropDownMenu({ onChange, value, options = [] }) {
   };
 
   return (
-    <div className="relative w-full text-sm">
+    <div className="relative w-full drop-down text-sm">
       <button
         type="button"
         onClick={toggleDropdown}

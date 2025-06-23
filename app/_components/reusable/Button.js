@@ -5,7 +5,7 @@ const sizes = {
 
 const colors = {
   primary: 'bg-main-purple text-primary-white hover:bg-main-purple-hover',
-  secondary: ' bg-main-purple/10 hover:bg-main-purple/25 text-main-purple',
+  secondary: ' bg-main-purple/10 hover:bg-main-purple/25 text-main-purple dark:bg-white dark:hover:bg-white ',
   destructive: 'bg-main-red hover:bg-main-red-hover text-primary-white',
 }
 

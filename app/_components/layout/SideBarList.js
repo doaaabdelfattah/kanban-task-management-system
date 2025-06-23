@@ -7,6 +7,7 @@ function SideBarList({ setIsSideMobile }) {
   const { openModal } = useModal();
   const { data, selectedBoardName, setSelectedBoardName } = useBoard();
 
+  const boardsNumber = data.boards.length;
   const handleClick = (boardName) => {
     setSelectedBoardName(boardName);
     if (window.innerWidth < 768) {
@@ -18,7 +19,7 @@ function SideBarList({ setIsSideMobile }) {
   return (
     <div className="flex-1 z-50 ">
       <h2 className='mt-4 px-8 uppercase text-medium-grey text-xs tracking-[2.4px] font-bold'>
-        All boards (3)
+        All boards ({boardsNumber})
       </h2>
       <ul className=' mt-5 mr-6'>
         {data.boards.map(board => (

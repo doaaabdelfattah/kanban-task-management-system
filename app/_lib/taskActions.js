@@ -31,19 +31,62 @@ export const taskActions = (setData, selectedBoardName) => (
         return {
           ...prev,
           boards: prev.boards.map((board) => {
-            if (board.name !== selectedBoardName) return board
+            if (board.name !== selectedBoardName) return board;
             return {
               ...board,
               columns: board.columns.map((col) => ({
                 ...col,
-                tasks: col.tasks.filter((t) => t.id !== task.id)
-              }))
+                tasks: col.tasks.filter((t) => {
+                  // console.log("Checking task ID", t.id, "against", task.id);
+                  return t.id !== task.id
+                }),
+              })),
+            };
+          })
+        };
+      });
+    },
+    editTask: (editedTask) => {
+      setData((prev) => {
+        return {
+          ...prev,
+          boards: prev.boards.map((board) => {
+            if (board.name !== selectedBoardName) return board;
+            return {
+              ...board,
+              columns: board.columns.map((col) => {
+                return {
 
+                  ...col,
+                  tasks: col.tasks.map((task) => task.id === editedTask.id ? editedTask : task)
+                }
+              })
             }
-
 
           })
         }
       })
+    },
+    updateTaskStatus: (taskId, newStatus) => {
+      setData((prev) => {
+        return {
+          ...prev,
+          boards: prev.boards.map((board) => {
+            if (board.name !== selectedBoardName) return board;
+            return {
+              ...board,
+              columns: board.columns.map((col) => {
+                const updatedTasks = col.tasks.map((task) => {
+                  if (task.id !== taskId) return task;
+                  return { ...task, status: newStatus };
+                });
+                return { ...col, tasks: updatedTasks };
+              }),
+            };
+          }),
+        };
+      });
     }
+
+
   })

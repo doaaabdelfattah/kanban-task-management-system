@@ -156,7 +156,7 @@ function DnDBoard() {
         <div className="grid auto-cols-[17.5rem] grid-flow-col gap-6">
           {selectedBoard.columns.map((column) => (
             <DroppableColumn key={column.name} id={column.name}>
-              <h2 className="font-bold mb-4">
+              <h2 className="font-bold mb-4 dark:text-medium-grey">
                 {column.name} ({column.tasks.length})
               </h2>
               <SortableContext

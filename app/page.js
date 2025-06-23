@@ -20,7 +20,7 @@ export default function Home() {
       grid-rows-[6rem_1fr] h-screen`}>
 
       {/* ======== Row 1========== */}
-      <div className="fixed top-0 left-0 right-0 grid lg:grid-cols-[18.75rem_1fr] md:grid-cols-[16.25rem_1fr] ">
+      <div className="fixed top-0 left-0 right-0 grid lg:grid-cols-[18.75rem_1fr] md:grid-cols-[16.25rem_1fr] z-10">
         <div className={`border-r-light-lines dark:border-r-dark-lines  border-r-1 max-md:hidden  flex justify-center bg-primary-white dark:bg-dark-grey  ${isSidebarOpen ? '' : 'border-b-light-lines dark:border-b-dark-lines border-b-1 '}`}>
           <Logo />
 

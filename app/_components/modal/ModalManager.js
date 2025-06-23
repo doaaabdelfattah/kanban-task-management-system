@@ -1,17 +1,13 @@
 'use client';
 
 import { useModal } from '@/app/_context/ModalContext';
-// import AddBoardModal from './AddBoardModal';
-// import EditBoardModal from './EditBoardModal';
-// import AddTaskModal from './AddTaskModal';
-// import EditTaskModal from './EditTaskModal';
-// import ViewTaskModal from './ViewTaskModal';
-// import AddBoard from '../boards/AddBoard';
+
 import ModalWrapper from './ModalWrapper';
 import AddBoardForm from '../boards/AddBoardForm';
 import ViewTaskModal from '../tasks/ViewTaskModal';
 import AddTaskForm from '../tasks/AddTaskForm';
-import DeleteBoard from '../boards/DeleteBoard';
+import DeleteModal from '../boards/DeleteModal';
+
 
 function ModalManager() {
   const { modal, closeModal } = useModal();
@@ -24,9 +20,11 @@ function ModalManager() {
     case 'add-board':
       ModalComponent = <AddBoardForm {...modal.props} onClose={closeModal} />;
       break;
-    case 'delete-board':
-      ModalComponent = <DeleteBoard {...modal.props} onClose={closeModal} />;
+
+    case 'delete-modal':
+      ModalComponent = <DeleteModal {...modal.props} onClose={closeModal} />;
       break;
+
     case 'add-task':
       ModalComponent = <AddTaskForm {...modal.props} onClose={closeModal} />;
       break;
@@ -36,6 +34,7 @@ function ModalManager() {
     case 'view-task':
       ModalComponent = <ViewTaskModal {...modal.props} onClose={closeModal} />;
       break;
+
     default:
       return null;
   }

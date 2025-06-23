@@ -9,7 +9,7 @@ function BoardProvider({ children, initialData }) {
   const [data, setData] = useState(initialData)
   const [selectedBoardName, setSelectedBoardName] = useState(initialData.boards[0]?.name);
 
-  const allBoardActions = boardActions(setData, setSelectedBoardName, data);
+  const allBoardActions = boardActions(setData, setSelectedBoardName, selectedBoardName, data);
   const allTaskActions = taskActions(setData, selectedBoardName);
 
   const value = { data, setData, selectedBoardName, setSelectedBoardName, ...allBoardActions, ...allTaskActions }

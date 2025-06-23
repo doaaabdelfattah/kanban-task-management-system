@@ -50,9 +50,6 @@ function DnDTaskCard({ task, id, isOverlay = false, }) {
         />
       </div>
 
-
-
-
       <h4 className="heading-md dark:text-primary-white group-hover:text-main-purple">
         {task.title}
       </h4>
