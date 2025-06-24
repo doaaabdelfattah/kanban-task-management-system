@@ -29,7 +29,7 @@ function DroppableColumn({ id, children }) {
 
 function DnDBoard() {
 
-  const { data, selectedBoardName, setData, editBoard } = useBoard();
+  const { data, selectedBoardName, setData } = useBoard();
   const { openModal } = useModal();
   const selectedBoard = data.boards.find((b) => b.name === selectedBoardName);
   const columns = selectedBoard.columns.map((col) => col.name);
